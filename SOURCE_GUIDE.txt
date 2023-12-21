@@ -1,0 +1,36 @@
+symbol_table.h: *check for doubly defined idents
+	- contains: 
+		- symbol table:
+			- identifier
+			* definition is found and parsed AT RUN TIME from token list
+		- operations: allocate, add, remove, free, traverse, look up definition (the definition is found and parsed AT RUN TIME)
+	* The symbol table is returned as a pointer. It is NOT global. The symbol table pointer should be linked to the controller.
+
+controller.h:
+	- contains: the control structure that is responsible for holding:
+		- pointer to the symbol table
+		- pointer to the entry AST node
+		- pointer to the entire token list
+		- operations: allocate, free, link/unlink symbol table, link/unlink entry AST node
+
+ast.h:
+	- contains:
+		- ast nodes, ast node operations
+		- ast node tree operations
+
+token_list.h:
+	- contains:
+		
+
+parse.h:
+	parsing operations
+
+lex.h:
+	lexing operations (run once to generate token list)
+
+load.h:
+	load a buffer with the source file and any included source files
+	* strip EOF from included files? so that a single EOF exists at the end like would be logical
+
+preprocess:
+	strip comments, strip whitespace
